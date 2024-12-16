@@ -1,16 +1,14 @@
-import { Suspense, lazy } from 'react'
-import { ErrorBoundary } from 'react-error-boundary'
-import { Route, Switch } from 'react-router-dom'
+import ErrorFallback from "./@helpers/ErrorFallback";
+import AppWrapper from "./AppWrapper";
+import NotFound from "components/@ui/NotFound";
+import { Suspense, lazy } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import { Route, Switch } from "react-router-dom";
+import Loading from "theme/Loading";
+import { Box } from "theme/base";
+import ROUTES from "utils/config/routes";
 
-import NotFound from 'components/@ui/NotFound'
-import Loading from 'theme/Loading'
-import { Box } from 'theme/base'
-import ROUTES from 'utils/config/routes'
-
-import ErrorFallback from './@helpers/ErrorFallback'
-import AppWrapper from './AppWrapper'
-
-const HomePage = lazy(() => import('./Home'))
+const HomePage = lazy(() => import("./Home"));
 
 function App() {
   return (
@@ -30,7 +28,7 @@ function App() {
         </Suspense>
       </AppWrapper>
     </ErrorBoundary>
-  )
+  );
 }
 
-export default App
+export default App;
