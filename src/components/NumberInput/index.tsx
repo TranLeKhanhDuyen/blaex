@@ -66,10 +66,10 @@ function NumberInput({
         p: 0,
         input: { fontSize: 32, lineHeight: '40px', width: '100%' },
         '&:focus-within:not([disabled])': {
-          bg: 'neutral6',
+          // bg: 'neutral6',
         },
         '&:hover:not([disabled]),&:focus:not([disabled])': {
-          bg: 'neutral6',
+          // bg: 'neutral6',
         },
         'input::placeholder': { color: 'neutral5' },
         ...(sx || {}),

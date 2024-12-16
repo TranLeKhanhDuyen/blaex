@@ -1,14 +1,15 @@
 import Avatar from "components/@ui/Avatar";
+import ChainLogo from "components/@ui/ChainLogo";
 import CenterItemContainer from "components/@ui/Container/CenterItemContainer";
 import Divider from "components/@ui/Divider";
 import NumberInput from "components/NumberInput";
-import React, { FC, useState } from "react";
-import styled from "styled-components";
+import { FC, useState } from "react";
 import { Button } from "theme/Buttons";
-import LayoutCollapseButton from "theme/Buttons/LayoutCollapseButton";
+import EthereumIcon from "theme/Icons/EthereumIcon";
 import { InputWrapper } from "theme/Input";
-import Tabs, { TabHeader, TabPane } from "theme/Tab";
-import { Box, Flex, Type } from "theme/base";
+import Tabs, { TabPane } from "theme/Tab";
+import { Flex, Type } from "theme/base";
+import { CHAINS } from "utils/web3/chains";
 
 interface KeyValueRowProps {
   label: string;
@@ -31,32 +32,7 @@ const KeyValueRow: FC<KeyValueRowProps> = ({
   </Flex>
 );
 
-const InputGroup = styled.div`
-  margin: 20px 0;
-  background: #1f1f1f;
-  border-radius: 8px;
-  padding: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const SwapButton = styled.button`
-  background: #b5ff00;
-  border: none;
-  color: black;
-  padding: 8px;
-  border-radius: 50%;
-  cursor: pointer;
-  margin: 10px auto;
-  display: block;
-`;
-// ================
-
 const Liquidity: FC = () => {
-  const [pay, setPay] = useState("");
-  const [receive, setReceive] = useState("");
-
   return (
     <>
       <Flex sx={{ flexDirection: "column", mb: "16px" }}>
@@ -69,9 +45,9 @@ const Liquidity: FC = () => {
       </Flex>
 
       <Flex sx={{ justifyContent: "center", gap: "8px" }}>
-        <CenterItemContainer
+        <Flex
           sx={{
-            with: "50%",
+            flexDirection: "column",
             backgroundColor: "background2",
             p: "16px",
             gap: "16px",
@@ -83,7 +59,7 @@ const Liquidity: FC = () => {
               width: "fit-content",
             }}
           >
-            <Avatar url="../../assets/images/avatar_default.png" size={48} />
+            <Avatar url="@assets/images/avatar_default.png" size={48} />
             <Flex sx={{ flexDirection: "column", justifyContent: "center" }}>
               <Type.BodyBold color="neutral1">BLI</Type.BodyBold>
               <Type.Caption color="neutral5">
@@ -104,12 +80,12 @@ const Liquidity: FC = () => {
             <KeyValueRow label="Protocol Yield APR" value="12.20%" />
             <KeyValueRow label="Blast Native Yield APR" value="2.21%" />
           </Flex>
-        </CenterItemContainer>
-        {/* ==================================================== */}
+        </Flex>
 
-        <CenterItemContainer
+        {/* ===== FORM ===== */}
+        <Flex
           sx={{
-            with: "50%",
+            flexDirection: "column",
             backgroundColor: "background2",
             p: "16px",
             gap: "16px",
@@ -122,30 +98,41 @@ const Liquidity: FC = () => {
           >
             {/* Tab 1: Buy BLI */}
             <TabPane key="buy" tab="Buy BLI">
-              <Box mb={3}>
-                <label>Pay</label>
-
-                <InputWrapper>
-                  <NumberInput
-                    placeholder="Nhập số tiền"
-                    maxLength={10}
-                    onFocus={() => console.log("Input được focus")}
-                    onBlur={() => console.log("Input mất focus")}
-                    className="number-input"
-                  />
-                </InputWrapper>
-
-                <span>ETH ▼</span>
-              </Box>
-
-              <Button variant="primary" size="large" block>
-                Buy
-              </Button>
+              <InputWrapper
+                clipPathType="2"
+                diffX={20}
+                diffY={10}
+                sx={{ flexDirection: "column", p: "16px" }}
+              >
+                <Flex sx={{ width: "100%", justifyContent: "space-between" }}>
+                  <label>Pay</label>
+                  <label>Balance</label>
+                </Flex>
+                <Flex sx={{ width: "100%", justifyContent: "space-between" }}>
+                  <NumberInput />
+                  {
+                    <ChainLogo
+                      chain={CHAINS[11155111]}
+                      active={true}
+                      sx={{
+                        margin: 4,
+                        backgroundColor: "rgba(249, 249, 249, 1)",
+                        padding: "10px",
+                        borderRadius: "50%",
+                        borderColor: "primary1",
+                      }}
+                    />
+                  }
+                </Flex>
+              </InputWrapper>
             </TabPane>
-
             {/* Tab 2: Short */}
           </Tabs>
-        </CenterItemContainer>
+
+          <Button variant="primary" size="large" block>
+            Buy
+          </Button>
+        </Flex>
       </Flex>
     </>
   );
