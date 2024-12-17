@@ -1,11 +1,10 @@
-import styled from 'styled-components/macro'
+import styled from "styled-components/macro";
+import { Box } from "theme/base";
 
-import { Box } from 'theme/base'
-
-const ARROW_SIZE = 32
-const ARROW_POSITION = -16
-const DOTS_POSITION = 24
-const DOTS_SIZE = 8
+const ARROW_SIZE = 32;
+const ARROW_POSITION = -16;
+const DOTS_POSITION = 24;
+const DOTS_SIZE = 8;
 
 const CarouselWrapper = styled(Box)`
   width: 100%;
@@ -65,7 +64,7 @@ const CarouselWrapper = styled(Box)`
   .slick-track:before,
   .slick-track:after {
     display: table;
-    content: '';
+    content: "";
   }
 
   .slick-track:after {
@@ -85,7 +84,7 @@ const CarouselWrapper = styled(Box)`
     min-height: 1px;
   }
 
-  [dir='rtl'] .slick-slide {
+  [dir="rtl"] .slick-slide {
     float: right;
   }
   .slick-slide img {
@@ -257,7 +256,7 @@ const CarouselWrapper = styled(Box)`
     width: ${DOTS_SIZE}px;
     height: ${DOTS_SIZE}px;
 
-    content: '';
+    content: "";
     text-align: center;
 
     // opacity: 0.2;
@@ -268,24 +267,23 @@ const CarouselWrapper = styled(Box)`
   }
   .slick-dots li.slick-active button:before {
     opacity: 1;
-    background: ${({ theme, color }) => (color ? color : theme.colors.primary1)};
+    background: ${({ theme, color }) =>
+      color ? color : theme.colors.primary1};
   }
-`
+`;
 
-export default CarouselWrapper
+export default CarouselWrapper;
 
 export const VerticalCarouselWrapper = styled(CarouselWrapper)`
   .slick-list {
     height: 42px !important;
-    @media all and (max-width: ${({ theme }) => {
-        return theme.breakpoints.md
-      }}) {
+    @media all and (max-width: ${({ theme }) => theme.breakpoints.md}) {
       height: 70px !important;
     }
   }
   overflow: hidden;
   border-radius: 8px;
-`
+`;
 
 export const HorizontalCarouselWrapper = styled(CarouselWrapper)`
   .slick-track {
@@ -316,4 +314,4 @@ export const HorizontalCarouselWrapper = styled(CarouselWrapper)`
       bottom: 0;
     }
   }
-`
+`;

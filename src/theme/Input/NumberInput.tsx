@@ -1,11 +1,14 @@
-import React, { useEffect, useRef } from 'react'
-import { Controller } from 'react-hook-form'
-import { NumericFormat } from 'react-number-format'
-
-import { InputWrapper, StyledInput, StyledPrefix, StyledSuffix } from 'theme/Input'
-import { SxProps } from 'theme/types'
-
-import { InputProps, NumberInputProps } from './types'
+import { InputProps, NumberInputProps } from "./types";
+import React, { useEffect, useRef } from "react";
+import { Controller } from "react-hook-form";
+import { NumericFormat } from "react-number-format";
+import {
+  InputWrapper,
+  StyledInput,
+  StyledPrefix,
+  StyledSuffix,
+} from "theme/Input";
+import { SxProps } from "theme/types";
 
 const NumberInput = ({
   affix,
@@ -22,21 +25,21 @@ const NumberInput = ({
   inputHidden = false,
   ...props
 }: NumberInputProps & InputProps & SxProps) => {
-  const ref = useRef<HTMLInputElement>(null)
+  const ref = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    if (!ref.current) return
-    if (props.maxLength) ref.current.maxLength = props.maxLength
-  }, [props.maxLength])
+    if (!ref.current) return;
+    if (props.maxLength) ref.current.maxLength = props.maxLength;
+  }, [props.maxLength]);
   return (
     <InputWrapper
       disabled={props.disabled}
-      variant={error ? 'error' : variant}
+      variant={error ? "error" : variant}
       block={block}
-      sx={{ ...sx, ...(inputHidden ? { '& input': { opacity: 0 } } : {}) }}
+      sx={{ ...sx, ...(inputHidden ? { "& input": { opacity: 0 } } : {}) }}
     >
       {!!affix && <StyledPrefix>{affix}</StyledPrefix>}
       <Controller
-        name={props.name || ''}
+        name={props.name || ""}
         control={control}
         rules={rules}
         defaultValue={props.defaultValue as string | number | undefined}
@@ -48,23 +51,23 @@ const NumberInput = ({
               value={value}
               thousandSeparator
               decimalScale={isInteger ? 0 : undefined}
-              isNumericString
+              valueIsNumericString
               isAllowed={isAllowed}
               placeholder={props.placeholder}
               customInput={StyledInput}
               onBlur={onBlur}
               onValueChange={(v: any) => {
-                onChange(v.floatValue)
-                onInputChange && onInputChange(value)
+                onChange(v.floatValue);
+                onInputChange && onInputChange(value);
               }}
             />
-          )
+          );
         }}
       />
 
       {!!suffix && <StyledSuffix>{suffix}</StyledSuffix>}
     </InputWrapper>
-  )
-}
+  );
+};
 
-export default NumberInput
+export default NumberInput;

@@ -1,40 +1,42 @@
-import { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from 'react'
-import { NumberFormatValues } from 'react-number-format'
-
-import { BoxProps } from 'theme/types'
+import { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from "react";
+import { NumberFormatValues } from "react-number-format";
+import { BoxProps } from "theme/types";
 
 export type InputWrapperProps = BoxProps & {
-  disabled?: boolean
-  block?: boolean
-  border?: 'small' | 'normal'
-  variant?: string
-  onClick?: any
-}
+  disabled?: boolean;
+  block?: boolean;
+  border?: "small" | "normal";
+  variant?: string;
+  onClick?: any;
+  clipPathType?: "1tr" | "1br" | "2" | "2r";
+  diffX?: number;
+  diffY?: number;
+};
 export type InputProps = {
-  control?: any
-  block?: boolean
-  border?: 'small' | 'normal'
-  error?: any
-  variant?: string
-  affix?: ReactNode
-  suffix?: ReactNode
-} & InputHTMLAttributes<HTMLInputElement>
+  control?: any;
+  block?: boolean;
+  border?: "small" | "normal";
+  error?: any;
+  variant?: string;
+  affix?: ReactNode;
+  suffix?: ReactNode;
+} & InputHTMLAttributes<HTMLInputElement>;
 
 export interface InputSearchProps extends InputProps {
-  onClear: () => void
+  onClear: () => void;
 }
 
 export type TextareaProps = {
-  block?: boolean
-  error?: any
-  variant?: string
-} & TextareaHTMLAttributes<HTMLTextAreaElement>
+  block?: boolean;
+  error?: any;
+  variant?: string;
+} & TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export type NumberInputProps = {
-  control: any
-  rules?: any
-  isInteger?: boolean
-  isAllowed?: (values: NumberFormatValues) => boolean
-  onInputChange?: (value?: number) => void
-  inputHidden?: boolean
-}
+  control: any;
+  rules?: any;
+  isInteger?: boolean;
+  isAllowed?: (values: NumberFormatValues) => boolean;
+  onInputChange?: (value?: number) => void;
+  inputHidden?: boolean;
+};

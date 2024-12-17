@@ -15,7 +15,7 @@ export const LINKS = {
   twitter: 'https://twitter.com/blaex_xyz',
 }
 
-export const NAVBAR_HEIGHT = 60
+export const NAVBAR_HEIGHT = 80
 export const FOOTER_HEIGHT = 40
 
 export const FONT_FAMILY =

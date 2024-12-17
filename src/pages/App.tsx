@@ -1,16 +1,15 @@
-import { Suspense, lazy } from 'react'
-import { ErrorBoundary } from 'react-error-boundary'
-import { Route, Switch } from 'react-router-dom'
+import ErrorFallback from "./@helpers/ErrorFallback";
+import AppWrapper from "./AppWrapper";
+import NotFound from "components/@ui/NotFound";
+import { Suspense, lazy } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import { Route, Switch } from "react-router-dom";
+import Loading from "theme/Loading";
+import { Box } from "theme/base";
+import ROUTES from "utils/config/routes";
 
-import NotFound from 'components/@ui/NotFound'
-import Loading from 'theme/Loading'
-import { Box } from 'theme/base'
-import ROUTES from 'utils/config/routes'
-
-import ErrorFallback from './@helpers/ErrorFallback'
-import AppWrapper from './AppWrapper'
-
-const HomePage = lazy(() => import('./Home'))
+const HomePage = lazy(() => import("./Home"));
+const LiquidityPage = lazy(() => import("./Liquidity"));
 
 function App() {
   return (
@@ -25,12 +24,13 @@ function App() {
         >
           <Switch>
             <Route path={ROUTES.HOME.path} exact component={HomePage}></Route>
+            <Route path={ROUTES.LIQUIDITY.path} exact component={LiquidityPage}></Route>
             <Route path="*" component={NotFound}></Route>
           </Switch>
         </Suspense>
       </AppWrapper>
     </ErrorBoundary>
-  )
+  );
 }
 
-export default App
+export default App;
