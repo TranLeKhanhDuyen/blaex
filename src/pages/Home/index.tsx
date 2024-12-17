@@ -1,6 +1,6 @@
-import Liquidity from "./Liquidity";
 import { useResponsive } from "ahooks";
 import CustomPageTitle from "components/@ui/CustomPageTitle";
+import Liquidity from "pages/Liquidity";
 import { Box } from "theme/base";
 
 export default function HomePage() {
