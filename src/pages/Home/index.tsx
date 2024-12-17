@@ -14,7 +14,7 @@ export default function HomePage() {
   return (
     <>
       <CustomPageTitle title="Blaex" />
-      <Liquidity></Liquidity>
+      <Liquidity />
     </>
   );
 }

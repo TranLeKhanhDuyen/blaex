@@ -9,6 +9,7 @@ import { Box } from "theme/base";
 import ROUTES from "utils/config/routes";
 
 const HomePage = lazy(() => import("./Home"));
+const LiquidityPage = lazy(() => import("./Liquidity"));
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         >
           <Switch>
             <Route path={ROUTES.HOME.path} exact component={HomePage}></Route>
+            <Route path={ROUTES.LIQUIDITY.path} exact component={LiquidityPage}></Route>
             <Route path="*" component={NotFound}></Route>
           </Switch>
         </Suspense>

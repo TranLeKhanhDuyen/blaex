@@ -1,17 +1,26 @@
-import { ReactNode } from 'react'
-import { ToastContainer } from 'react-toastify'
-
-import useGlobalDialog from 'hooks/store/useGlobalDialog'
-import Loading from 'theme/Loading'
-import { Box, Flex, Type } from 'theme/base'
+import Navbar from "./@layouts/Navbar";
+import useGlobalDialog from "hooks/store/useGlobalDialog";
+import { ReactNode } from "react";
+import { ToastContainer } from "react-toastify";
+import Loading from "theme/Loading";
+import { Box, Flex, Type } from "theme/base";
+import { NAVBAR_HEIGHT } from "utils/config/constants";
 
 const AppWrapper = ({ children }: { children: ReactNode }) => {
-  const dialog = useGlobalDialog((state) => state.dialog)
+  const dialog = useGlobalDialog((state) => state.dialog);
 
   return (
     <>
-      <Flex className="app_wrapper" sx={{ height: '100%', flexDirection: 'column' }}>
-        <Box width="100%" flex="1" sx={{ position: 'relative', overflowY: 'auto' }}>
+      <Flex
+        className="app_wrapper"
+        sx={{ height: "100%", flexDirection: "column" }}
+      >
+        <Navbar height={NAVBAR_HEIGHT} />
+        <Box
+          width="100%"
+          flex="1"
+          sx={{ position: "relative", overflowY: "auto" }}
+        >
           {children}
         </Box>
       </Flex>
@@ -22,24 +31,31 @@ const AppWrapper = ({ children }: { children: ReactNode }) => {
           alignItems="center"
           variant="shadow"
           sx={{
-            position: 'fixed',
+            position: "fixed",
             top: 0,
             left: 0,
-            width: '100%',
-            height: '100%',
+            width: "100%",
+            height: "100%",
             zIndex: 10000,
           }}
         >
-          <Box variant="card" width="fit-content" height="fit-content" textAlign="center">
+          <Box
+            variant="card"
+            width="fit-content"
+            height="fit-content"
+            textAlign="center"
+          >
             {dialog.hasLoading && <Loading />}
             <Type.BodyBold display="block">{dialog.title}</Type.BodyBold>
-            {!!dialog.description && <Type.Caption color="neutral3">{dialog.description}</Type.Caption>}
+            {!!dialog.description && (
+              <Type.Caption color="neutral3">{dialog.description}</Type.Caption>
+            )}
             <Box>{dialog.body}</Box>
           </Box>
         </Flex>
       )}
     </>
-  )
-}
+  );
+};
 
-export default AppWrapper
+export default AppWrapper;
